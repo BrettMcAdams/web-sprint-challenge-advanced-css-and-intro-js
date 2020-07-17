@@ -235,14 +235,16 @@ function getArtistByIndex(array, index) {
 /* Task 4: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
 function get20s(arr, year1, year2){
-  let = artistsName = []
-  for (let i = 0; i < get20s.length; i++)
-  if  (arr[i].years >= year1 && arr[i].year <= year2) {
-    artistsName.push(arr[i].name)
+  let artistsName = []
+  for (let i = 0; i < arr.length; i++) {
+    if  (arr[i].years >= year1 && arr[i].years < year2) {
+      artistsName.push(arr[i].name)
+    }
   }
+  return artistsName
 }
 
-console.log(get20s(artists, 1900, 2000))
+console.log(get20s(artists, '1900', '2000'))
 
 
 /* Task 5: Create a function called `removeArtist` that takes two arguments:
@@ -255,11 +257,13 @@ console.log(get20s(artists, 1900, 2000))
  * 
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
-function removeArtist(/*code here*/) {
-    /* code here */
-  }
+function removeArtist(arr, index) {
+
+  arr.splice(index,1)
+  return arr.length
+}
   
- 
+// console.log(removeArtist(artists, 0))
 
 /**
 /* Task 6: Create a function called `addArtist` that can accept an object of information and add it to the artists array. Then, add a 21st artist to the array (you) with custom information!👩‍🎨👨‍🎨
@@ -274,12 +278,11 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 
 At the end, this function should return the new array with information added"*/
 
-function addArtist(/* Code here */){
-
-    /* Code here */
-
-  }
-
+function addArtist(arr, id, name, years, genre, nationality, bio){
+  arr.push({id, name, years, genre, nationality, bio})
+  return arr
+}
+// console.log(addArtist(artists, 20, 'Brett Mcadams', '1996-2020', 'Web Design', 'Mixed', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.' ))
 /* Task 7: Create a function called lotsOfArt() that takes one argument: 
 
     (1) artists array 
@@ -288,13 +291,17 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-function lotsOfArt(/* Code here */){
-
-  /* Code here */
-
+const lotsOfArt = (array) => {
+  let newArray = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].paintings > 100) {
+      newArray.push(array[i].name)
+    }
+  }  
+  return newArray
 }
 
-
+// console.log(lotsOfArt(artists))
 
 // 🎨🎨 STRETCH 🎨🎨//
 
